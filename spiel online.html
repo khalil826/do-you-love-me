@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Eine wichtige Frage ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                135deg,
+                #ffd6e7,
+                #fff0f6,
+                #ffc2dc
+            );
+        }
+
+        .karte {
+            width: 90%;
+            max-width: 500px;
+            min-height: 520px;
+
+            background: white;
+            border-radius: 30px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            box-shadow: 0 15px 50px
+                        rgba(255, 80, 140, 0.25);
+
+            position: relative;
+        }
+
+        h1 {
+            color: #ff4f91;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .untertitel {
+            color: #777;
+            font-size: 17px;
+        }
+
+        .baer {
+            font-size: 110px;
+            margin: 25px 0 10px 0;
+
+            animation: schweben 2s infinite alternate;
+        }
+
+        @keyframes schweben {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-10px);
+            }
+        }
+
+        .herzen {
+            font-size: 25px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+
+            margin-top: 20px;
+        }
+
+        button {
+            border: none;
+            padding: 15px 35px;
+
+            font-size: 20px;
+            font-weight: bold;
+
+            border-radius: 50px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        #ja {
+            background: #ff4f91;
+            color: white;
+
+            box-shadow: 0 5px 15px
+                        rgba(255, 79, 145, 0.4);
+        }
+
+        #ja:hover {
+            transform: scale(1.15);
+        }
+
+        #nein {
+            background: #eeeeee;
+            color: #555;
+
+            position: relative;
+        }
+
+        #antwort {
+            display: none;
+
+            margin-top: 25px;
+
+            font-size: 25px;
+            font-weight: bold;
+
+            color: #ff4f91;
+        }
+
+        .grosses-herz {
+            display: none;
+
+            font-size: 70px;
+
+            animation: herz 0.7s infinite alternate;
+        }
+
+        @keyframes herz {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.25);
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="karte">
+
+        <h1>Liebst du mich? ❤️</h1>
+
+        <div class="untertitel">
+            Der kleine Bär wartet auf deine Antwort...
+        </div>
+
+
+        <div class="baer">
+            🧸
+        </div>
+
+        <div class="herzen">
+            💕 💗 💕
+        </div>
+
+
+        <div class="buttons">
+
+            <button id="ja">
+                JA ❤️
+            </button>
+
+            <button id="nein">
+                NEIN 😜
+            </button>
+
+        </div>
+
+
+        <div id="antwort">
+            Ja, natürlich liebe ich dich! ❤️🥰
+        </div>
+
+        <div
+            class="grosses-herz"
+            id="grossesHerz">
+            ❤️
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const ja =
+            document.getElementById("ja");
+
+        const nein =
+            document.getElementById("nein");
+
+        const antwort =
+            document.getElementById("antwort");
+
+        const grossesHerz =
+            document.getElementById("grossesHerz");
+
+
+        // JA anklicken ❤️
+
+        ja.addEventListener("click", function() {
+
+            antwort.style.display = "block";
+
+            grossesHerz.style.display = "block";
+
+            ja.innerHTML = "ICH AUCH ❤️";
+
+            nein.style.display = "none";
+
+        });
+
+
+        // NEIN läuft weg 😂
+
+        function neinLaeuftWeg() {
+
+            nein.style.position = "fixed";
+
+            const breite =
+                window.innerWidth - nein.offsetWidth;
+
+            const hoehe =
+                window.innerHeight - nein.offsetHeight;
+
+
+            const x =
+                Math.random() * breite;
+
+            const y =
+                Math.random() * hoehe;
+
+
+            nein.style.left = x + "px";
+
+            nein.style.top = y + "px";
+        }
+
+
+        // Am PC mit Maus
+
+        nein.addEventListener(
+            "mouseover",
+            neinLaeuftWeg
+        );
+
+
+        // Am Handy
+
+        nein.addEventListener(
+            "touchstart",
+            function(event) {
+
+                event.preventDefault();
+
+                neinLaeuftWeg();
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
